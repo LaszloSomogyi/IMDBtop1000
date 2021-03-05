@@ -35,6 +35,34 @@
                 <h:outputText value="#{mov.genre}"/>
             </h:column>
             
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Year"/>
+                </f:facet>
+                <h:outputText value="#{mov.releasedYear}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Rating"/>
+                </f:facet>
+                <h:outputText value="#{mov.imdbRating}"/>
+            </h:column>
+            
+                        <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Runtime"/>
+                </f:facet>
+                <h:outputText value="#{mov.runtime}"/>
+            </h:column>
+            
+                        <h:column>
+                <f:facet name="header">
+                    <h:outputText value="No. of Votes"/>
+                </f:facet>
+                <h:outputText value="#{mov.noOfVotes}"/>
+            </h:column>
+            
 
 
 
