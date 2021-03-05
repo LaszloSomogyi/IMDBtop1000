@@ -19,6 +19,7 @@ import pojos.ImdbTop1000;
 @SessionScoped
 public class Lister {
 
+    private ImdbTop1000 selectedMovie;
     private List<ImdbTop1000> movies;
     
     public Lister() {
@@ -27,13 +28,26 @@ public class Lister {
         session.close();
         
     }
-
+    
+    public String details(ImdbTop1000 movie){
+        selectedMovie = movie;
+        return "movie_details";
+    }
+    
     public List<ImdbTop1000> getMovies() {
         return movies;
     }
 
     public void setMovies(List<ImdbTop1000> movies) {
         this.movies = movies;
+    }
+
+    public ImdbTop1000 getSelectedMovie() {
+        return selectedMovie;
+    }
+
+    public void setSelectedMovie(ImdbTop1000 selectedMovie) {
+        this.selectedMovie = selectedMovie;
     }
     
     
