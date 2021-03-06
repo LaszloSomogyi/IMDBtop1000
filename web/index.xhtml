@@ -38,7 +38,8 @@
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Year"/>
+                        <h:commandLink value="Year" action="#{lister.sortByYear}"/>
+                        
                     </f:facet>
                     <h:outputText value="#{mov.releasedYear}"/>
                 </h:column>
@@ -63,11 +64,8 @@
                     </f:facet>
                     <h:outputText value="#{mov.noOfVotes}"/>
                 </h:column>
-
-
-
-
             </h:dataTable>
+            
         </h:form>
     </h:body>
 </html>
