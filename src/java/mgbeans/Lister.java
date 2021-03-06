@@ -7,6 +7,8 @@ package mgbeans;
 
 import comparators.GrossComparator;
 import comparators.GrossReverseComparator;
+import comparators.RankComparator;
+import comparators.RankReverseComparator;
 import comparators.YearComparator;
 import comparators.YearReverseComparator;
 import java.util.Collections;
@@ -48,6 +50,14 @@ public class Lister {
         return "movie_details";
     }
     
+    public void sortByRank() {
+        if(movies.get(0).getId()!=1) {
+            Collections.sort(movies, new RankComparator());
+        } else if(movies.get(0).getId()==1) {
+            Collections.sort(movies, new RankReverseComparator());
+        }
+    }
+    
     public void sortByYear() {
         if (movies.get(0).getId()==1) {
             Collections.sort(movies, new YearComparator());
@@ -66,16 +76,6 @@ public class Lister {
         } else {
             Collections.sort(movies, new GrossComparator());
         }
-    }
-    
-    public ImdbTop1000 getOldestMovie(List<ImdbTop1000> movies){
-        ImdbTop1000 oldest = new ImdbTop1000();
-        for(int i = 0; i < movies.size(); i++){
-            if(movies.get(i).getReleasedYear()<oldest.getReleasedYear()){
-                oldest = movies.get(i);
-            }
-        }
-        return oldest;
     }
     
     public List<ImdbTop1000> getMovies() {

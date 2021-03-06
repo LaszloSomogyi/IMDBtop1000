@@ -17,7 +17,7 @@
                 rowClasses="order-table-odd-row, order-table-even-row">
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Ranking"/>
+                        <h:commandLink value="Ranking" action="#{lister.sortByRank()}"/>
                     </f:facet>
                     <h:outputText value="#{mov.id}"/>
                 </h:column>
@@ -39,7 +39,6 @@
                 <h:column>
                     <f:facet name="header">
                         <h:commandLink value="Year" action="#{lister.sortByYear}"/>
-
                     </f:facet>
                     <h:outputText value="#{mov.releasedYear}"/>
                 </h:column>
