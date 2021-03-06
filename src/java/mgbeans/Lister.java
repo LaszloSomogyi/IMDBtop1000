@@ -5,6 +5,8 @@
  */
 package mgbeans;
 
+import comparators.GrossComparator;
+import comparators.GrossReverseComparator;
 import comparators.YearComparator;
 import comparators.YearReverseComparator;
 import java.util.Collections;
@@ -53,6 +55,16 @@ public class Lister {
             Collections.sort(movies, new YearReverseComparator());
         } else {
             Collections.sort(movies, new YearComparator());
+        }
+    }
+    
+    public void sortByGross() {
+        if (movies.get(0).getGross() != 936662225 && movies.get(0).getGross() != 1000045) {
+            Collections.sort(movies, new GrossComparator());
+        } else if (movies.get(0).getGross() == 1000045) {
+            Collections.sort(movies, new GrossReverseComparator());
+        } else {
+            Collections.sort(movies, new GrossComparator());
         }
     }
     

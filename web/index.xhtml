@@ -39,7 +39,7 @@
                 <h:column>
                     <f:facet name="header">
                         <h:commandLink value="Year" action="#{lister.sortByYear}"/>
-                        
+
                     </f:facet>
                     <h:outputText value="#{mov.releasedYear}"/>
                 </h:column>
@@ -62,10 +62,21 @@
                     <f:facet name="header">
                         <h:outputText value="No. of Votes"/>
                     </f:facet>
-                    <h:outputText value="#{mov.noOfVotes}"/>
+                    <h:outputText value="#{mov.noOfVotes}">
+                        <f:convertNumber pattern="#00,000" />
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:commandLink value="Box Office" action="#{lister.sortByGross()}"/>
+                    </f:facet>
+                    <h:outputText value="#{mov.gross}">
+                        <f:convertNumber pattern="#000,000"/>
+                    </h:outputText>
                 </h:column>
             </h:dataTable>
-            
+
         </h:form>
     </h:body>
 </html>
