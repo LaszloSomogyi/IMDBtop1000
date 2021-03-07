@@ -24,7 +24,8 @@
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Title"/>
+                        <h:outputText value="Title"/><br/>
+                        <h:inputText value="#{lister.title}"/> <h:commandButton value="Search!" action="#{lister.searchTitle()}"/>
                     </f:facet>
                     <h:commandLink value="#{mov.title}" action="#{lister.details(mov)}"/>
                 </h:column>

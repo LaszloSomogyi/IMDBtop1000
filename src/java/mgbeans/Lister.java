@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import pojos.ImdbTop1000;
 
@@ -26,11 +27,11 @@ import pojos.ImdbTop1000;
 @SessionScoped
 public class Lister {
 
+    private String title;
     private ImdbTop1000 selectedMovie;
     private List<ImdbTop1000> movies;
     private ImdbTop1000 oldestMovie;
-    private ImdbTop1000 latestMovie;
-    private ImdbTop1000 highestRankedMovie;
+    
     
     public Lister() {
         Session session = hibernate.HibernateUtil.getSessionFactory().openSession();
@@ -73,6 +74,14 @@ public class Lister {
         }
     }
     
+    public void searchTitle(){
+        Session session = hibernate.HibernateUtil.getSessionFactory().openSession();
+        Query q = session.createQuery("FROM ImdbTop1000 WHERE title LIKE :ptitle");
+        q.setString("ptitle", "%" + title + "%");
+        movies = q.list();
+        session.close();
+    }
+    
     public List<ImdbTop1000> getMovies() {
         return movies;
     }
@@ -87,6 +96,22 @@ public class Lister {
 
     public void setSelectedMovie(ImdbTop1000 selectedMovie) {
         this.selectedMovie = selectedMovie;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public ImdbTop1000 getOldestMovie() {
+        return oldestMovie;
+    }
+
+    public void setOldestMovie(ImdbTop1000 oldestMovie) {
+        this.oldestMovie = oldestMovie;
     }
     
 }
