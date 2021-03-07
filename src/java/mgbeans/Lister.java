@@ -35,14 +35,9 @@ public class Lister {
     public Lister() {
         Session session = hibernate.HibernateUtil.getSessionFactory().openSession();
         movies = session.createQuery("FROM ImdbTop1000").list();
-        
-        
+         
         oldestMovie = (ImdbTop1000) session.createQuery("FROM ImdbTop1000 WHERE Released_Year='1927'").uniqueResult();
-        highestRankedMovie= (ImdbTop1000) session.createQuery("FROM ImdbTop1000 WHERE id='1'").uniqueResult();
-        //latestMovie = movies.get(movies.size()-1);
         session.close();
-        
-        
     }
     
     public String details(ImdbTop1000 movie){
@@ -93,8 +88,5 @@ public class Lister {
     public void setSelectedMovie(ImdbTop1000 selectedMovie) {
         this.selectedMovie = selectedMovie;
     }
-    
-    
-    
     
 }
