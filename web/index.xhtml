@@ -32,7 +32,8 @@
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Genre"/>
+                        <h:outputText value="Genre"/><br/>
+                        <h:inputText value="#{lister.genre}"/> <h:commandButton value="Search!" action="#{lister.searchGenre()}"/>
                     </f:facet>
                     <h:outputText value="#{mov.genre}"/>
                 </h:column>

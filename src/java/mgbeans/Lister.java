@@ -28,6 +28,7 @@ import pojos.ImdbTop1000;
 public class Lister {
 
     private String title;
+    private String genre;
     private ImdbTop1000 selectedMovie;
     private List<ImdbTop1000> movies;
     private ImdbTop1000 oldestMovie;
@@ -82,6 +83,14 @@ public class Lister {
         session.close();
     }
     
+    public void searchGenre(){
+        Session session = hibernate.HibernateUtil.getSessionFactory().openSession();
+        Query q = session.createQuery("FROM ImdbTop1000 WHERE genre LIKE :pgenre");
+        q.setString("pgenre", "%" + genre + "%");
+        movies = q.list();
+        session.close();
+    }
+    
     public List<ImdbTop1000> getMovies() {
         return movies;
     }
@@ -113,5 +122,15 @@ public class Lister {
     public void setOldestMovie(ImdbTop1000 oldestMovie) {
         this.oldestMovie = oldestMovie;
     }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+    
+    
     
 }
